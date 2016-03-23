@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			AOW
+		</title>
+		<style type="text/css">
+			html, body
+			{
+				height: 100%;
+			}
+
+			body
+			{
+				margin: 0;
+				background-color: #0f254e;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body >
+		<svg version="1.1" id="" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" height="100%" width="100%" viewBox="0 0 100 56.25" enable-background="new 0 0 100 56.25" xml:space="preserve" preserveAspectRatio="xMidYMid slice">
+		
+			
+			<image overflow="visible" width="1920" height="1080" xlink:href="img/shape.png"  transform="matrix(0.0521 0 0 0.0521 0 -4.882812e-04)">
+			</image>
+
+				<text id="text" x="85.6484" y="30.9399"  fill="#CFCECA" font-family="'Brown-Regular'" font-size="4.5833" font-size="4.5833" opacity="0">
+					<tspan x="72.3599" y="14.1069">k</tspan>
+					<tspan x="74.7197" y="34.4839">o</tspan>
+					<tspan x="77.3779" y="19.4751">w</tspan>
+					<tspan x="81.0376" y="32.7119">s</tspan>
+					<tspan x="83.1157" y="28.2822">k</tspan>
+					<tspan x="85.6484" y="30.9399">i</tspan>
+					<tspan x="69.6392" y="29.168">u</tspan>
+					<tspan x="66.8091" y="46.001">b</tspan>
+					<tspan x="65.042" y="19.4229">r</tspan>
+					<tspan x="62.5566" y="42.4575">e</tspan>
+					<tspan x="60.7119" y="13.2212">t</tspan>
+					<tspan x="58.6328" y="27.4482">s</tspan>
+					<tspan x="57.3818" y="39.7993">i</tspan>
+					<tspan x="53.0518" y="19.4229">m</tspan>
+					<tspan x="44.5146" y="38.9136">y</tspan>
+					<tspan x="41.9971" y="13.2212">k</tspan>
+					<tspan x="39.9023" y="46.835">s</tspan>
+					<tspan x="38.7139" y="24.7383">i</tspan>
+					<tspan x="35.8843" y="37.1416">h</tspan>
+					<tspan x="32.21" y="26.5103">w</tspan>
+					<tspan x="30.2715" y="20.3086">r</tspan>
+					<tspan x="27.77" y="42.4575">e</tspan>
+					<tspan x="24.9868" y="37.1416">h</tspan>
+					<tspan x="23.0645" y="13.2734">t</tspan>
+					<tspan x="20.4375" y="22.0806">o</tspan>
+					<tspan x="17.6079" y="43.291">n</tspan>
+					<tspan x="14.606" y="16.7651">A</tspan>
+					<tspan x="46.8901" y="28.2822" fill="#F2DC76">for</tspan>
+				</text>
+			
+		</svg>
+		<!-- GSAP -->
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
+		<!-- jQuery -->
+		<script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+
+		<script type="text/javascript">
+			var home = {
+				// PRIVATE
+				// Here go the private variables
+
+				// PUBLIC
+				// Here go the public variables
+
+				// DOM public elements
+
+
+				// DOM private elements
+
+				// FUNCTIONS
+				init: function() {
+
+					this._initPlugins();
+
+				},
+
+				
+				_initPlugins: function(){
+					var _this = this;
+
+					_this.animationText();
+					_this.draw( 'body' );
+							
+				},
+
+				_initEvents: function(){
+
+				},
+
+				animationText: function(){
+					
+					var timelineText = new TimelineMax({
+						// paused: true,
+						// repeat: 0,
+						onStart: 
+							function()
+							{
+							
+							},
+						onComplete: 
+							function()
+							{
+							}
+						
+					});
+
+
+					var text = $('#text tspan');
+
+					timelineText
+						// RECTANGLE
+						.staggerTo( 
+							text, 
+							3, 
+							{ 
+								attr:
+								{ 
+									y: '28.2808',
+								},
+								ease: Back.easeOut.config(1.7),
+							}
+						)
+						.to(
+							'#text',
+							3,
+							{
+								attr:
+								{
+									opacity: 1,
+								}
+							},
+							'-=3'
+						)
+
+				},
+				draw: function( element ) {
+					var _this = this;
+
+					// DRAW NOISE
+
+					// SRC: http://codepen.io/lukerichardville/pen/rOQGYE
+				    var canvasElement = document.createElement('canvas'),
+				      	$ = canvasElement.getContext('2d'),
+				      	positionX, 
+				      	positionY, 
+				      	i;
+
+				  	canvasElement.width = 256;
+				  	canvasElement.height = 256;
+
+				  	for ( 
+				  		var positionX = 0; 
+				  		positionX < canvasElement.width; 
+				  		positionX++
+				  		) {
+
+				    	for (
+				    		var positionY = 0; 
+				    			positionY < canvasElement.height; 
+				    			positionY++
+				    		) {
+
+				    		// Math.floor rounded down 
+				    		// Simple pipe only works with integers and zero.
+					      	i = Math.floor( ( Math.random() * 255) | 0 );
+					      	$.fillStyle = 'rgba('+ i +','+ i +','+ i +', 1)';
+					      	$.fillRect( positionX, positionY, 0.5, 0.09 );
+
+				    	}
+				  	}
+				  					  	
+				  	jQuery( element )
+				  		// canvas.toDataURL: https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL
+				  		.css( 'background-image',  'url(' + canvasElement.toDataURL('image/png') + ')');
+
+				},
+			};
+
+			// Don't forget to init the view!
+			home.init();
+		</script>
+	</body>
+</html>
+
+
+
